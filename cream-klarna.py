@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 
 import argparse
+import sys
 import klarnacheckout
 
 parser = argparse.ArgumentParser(description='Klarna command line client.')
 parser.add_argument('--acknowledge-order', dest='checkout_id', action='store', nargs=1,
                     help='acknowledge order with specified checkout id')
+
+if len(sys.argv) == 1:
+    parser.print_help()
+    sys.exit(1)
 
 args = parser.parse_args()
 
